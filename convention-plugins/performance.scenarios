@@ -1,0 +1,15 @@
+clean_assemble {
+    tasks = [":assemble"]
+    cleanup-tasks = ["clean"]
+    run-using = cli
+    daemon = none
+
+    clear-build-cache-before = CLEANUP
+    clear-configuration-cache-state-before = CLEANUP
+    clear-project-cache-before = CLEANUP
+    clear-transform-cache-before = CLEANUP
+    clear-jars-cache-before = CLEANUP
+
+    warm-ups = 1
+    iterations = 3
+}

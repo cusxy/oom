@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.1"
+agp = "8.5.2"
 kotlin = "2.0.0"
 kotlin-ksp = "2.0.0-1.0.22"
 coreKtx = "1.13.1"
@@ -36,6 +36,15 @@ dagger-lint = { group = "com.google.dagger", name = "dagger-lint", version.ref =
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+
+# Jetbrains Kotlin
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+# Android Gradle Plugins
+android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+
+# Google Plugis
+ksp-gradlePlugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "kotlin-ksp"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

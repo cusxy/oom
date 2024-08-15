@@ -17,3 +17,6 @@ build
 local.properties
 
 /modules
+
+/gradle-user-home
+/profile-out*

@@ -1,0 +1,172 @@
+clean_assemble {
+    tasks = [":app:assembleDebug"]
+    gradle-args = ["--no-build-cache", "--no-configuration-cache"]
+    cleanup-tasks = ["clean"]
+    run-using = cli
+    daemon = none
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}
+
+incremental_assemble {
+    tasks = [":app:assembleDebug"]
+    gradle-args = ["--no-build-cache", "--no-configuration-cache"]
+    run-using = cli
+    daemon = none
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}
+
+clean_assemble_buildcache {
+    tasks = [":app:assembleDebug"]
+    gradle-args = ["--build-cache", "--no-configuration-cache"]
+    cleanup-tasks = ["clean"]
+    run-using = cli
+    daemon = none
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}
+
+clean_assemble_configurationcache {
+    tasks = [":app:assembleDebug"]
+    gradle-args = ["--no-build-cache", "--configuration-cache"]
+    cleanup-tasks = ["clean"]
+    run-using = cli
+    daemon = none
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}
+
+clean_assemble_buildcache_configurationcache {
+    tasks = [":app:assembleDebug"]
+    gradle-args = ["--build-cache", "--configuration-cache"]
+    cleanup-tasks = ["clean"]
+    run-using = cli
+    daemon = none
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}
+
+clean_assemble_cold_buildcache_configurationcache {
+    tasks = [":app:assembleDebug"]
+    gradle-args = ["--build-cache", "--configuration-cache"]
+    cleanup-tasks = ["clean"]
+    run-using = cli
+    daemon = cold
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}
+
+clean_assemble_warm_buildcache_configurationcache {
+    tasks = [":app:assembleDebug"]
+    gradle-args = ["--build-cache", "--configuration-cache"]
+    cleanup-tasks = ["clean"]
+    run-using = cli
+    daemon = warm
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}
+
+clean_incremental_assemble_warm_abi {
+    tasks = [":app:assembleDebug"]
+    gradle-args = ["--build-cache", "--configuration-cache"]
+    cleanup-tasks = ["clean"]
+    run-using = cli
+    daemon = warm
+
+    apply-abi-change-to = "modules/m0/src/main/kotlin/com/example/oom/m0/models/Model0.kt"
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}
+
+clean_incremental_assemble_warm_nonabi {
+    tasks = [":app:assembleDebug"]
+    gradle-args = ["--build-cache", "--configuration-cache"]
+    cleanup-tasks = ["clean"]
+    run-using = cli
+    daemon = warm
+
+    apply-non-abi-change-to = "modules/m0/src/main/kotlin/com/example/oom/m0/models/Model0.kt"
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}
+
+modules_m0_clean_assemble {
+    tasks = [":modules:m0:assembleDebug"]
+    gradle-args = ["--no-build-cache", "--no-configuration-cache"]
+    cleanup-tasks = [":modules:m0:clean"]
+    run-using = cli
+    daemon = none
+
+    clear-build-cache-before = SCENARIO
+    clear-configuration-cache-state-before = SCENARIO
+    clear-project-cache-before = SCENARIO
+    clear-transform-cache-before = SCENARIO
+    clear-jars-cache-before = SCENARIO
+
+    warm-ups = 1
+    iterations = 3
+}

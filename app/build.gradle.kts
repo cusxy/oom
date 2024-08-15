@@ -7,12 +7,6 @@ plugins {
     alias(libs.plugins.google.devtools.ksp)
 }
 
-buildscript {
-    dependencies {
-        classpath("com.android.tools.build:gradle:8.4.1")
-    }
-}
-
 android {
     namespace = "com.example.oom.app"
     compileSdk = 34
@@ -32,19 +26,13 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isDebuggable = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-        register("feature") {
-            initWith(getByName("debug"))
-            matchingFallbacks += listOf("debug")
-
-            isDebuggable = false
-            isMinifyEnabled = true
-            isShrinkResources = true
         }
     }
     compileOptions {
@@ -53,6 +41,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+        // languageVersion = "1.9"
     }
     buildFeatures {
         compose = true
@@ -61,6 +50,9 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+    lint {
+        checkReleaseBuilds = false
     }
 }
 
