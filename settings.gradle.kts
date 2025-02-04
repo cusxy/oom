@@ -34,6 +34,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    versionCatalogs {
+        create("gradleLibs") { from(files("gradle/gradle.libs.versions.toml")) }
+    }
 }
 
 rootProject.name = "oom"

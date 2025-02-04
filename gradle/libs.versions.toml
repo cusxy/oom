@@ -1,56 +1,108 @@
 [versions]
-agp = "8.5.2"
-kotlin = "2.0.20"
-kotlin-ksp = "2.0.20-1.0.25"
-coreKtx = "1.13.1"
-junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.8.1"
-activityCompose = "1.9.0"
-composeBom = "2024.05.00"
 
-dagger = "2.51.1"
+# Jetbrains Kotlin (https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin)
+kotlin = "2.1.10" # Fully supported versions of gradle 7.6.3–8.10* & agp 7.3.1–8.7.2 (https://github.com/JetBrains/kotlin/releases)
+
+# Android Gradle Plugins (https://developer.android.com/build/releases/gradle-plugin)
+agp = "8.8.0" # Android Studio version: Ladybug | 2024.2.2; API level: 35; Gradle: 8.10.2 (https://mvnrepository.com/artifact/com.android.tools.build/gradle)
+
+# Kotlin Symbol Processing (https://github.com/google/ksp/releases)
+ksp = "2.1.10-1.0.29" # Compile with kotlin 2.1.10
+
+# AndroidX (https://developer.android.com/jetpack/androidx/versions)
+androidx-core = "1.15.0"
+androidx-activity = "1.10.0"
+androidx-lifecycle = "2.8.7"
+
+# AndroidX Compose
+androidx-compose-bom = "2025.01.01" # Compile with compose 1.7.7 (https://developer.android.com/develop/ui/compose/bom/bom-mapping)
+
+# AndroidX Test (https://developer.android.com/jetpack/androidx/releases/test)
+androidx-test-espresso = "3.6.1"
+androidx-test-junit = "1.2.1"
+
+# Compose (https://github.com/JetBrains/kotlin-multiplatform-dev-docs/blob/master/topics/compose/compose-compatibility-and-versioning.md)
+compose = "1.7.3" # Compile with compose 1.7.6 & material3 1.3.1 (https://github.com/JetBrains/compose-multiplatform/releases)
+
+# Dagger (https://github.com/google/dagger/releases)
+dagger = "2.55"
+
+# JUnit (https://github.com/junit-team/junit4/releases)
+junit = "4.13.2"
+
+# Kotest (https://github.com/kotest/kotest/releases)
 kotest = "5.9.1"
 
+# Cache Fix (https://github.com/gradle/android-cache-fix-gradle-plugin/releases)
+cachefix = "3.0.1"
+
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidx-ui = { group = "androidx.compose.ui", name = "ui" }
-androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-
-dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
-dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
-dagger-lint = { group = "com.google.dagger", name = "dagger-lint", version.ref = "dagger" }
-
-kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
-kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
-kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 
 # Jetbrains Kotlin
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 
 # Android Gradle Plugins
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 
-# Google Plugis
-ksp-gradlePlugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "kotlin-ksp"}
+# Kotlin Symbol Processing
+ksp-gradlePlugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
+
+# AndroidX
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+
+# AndroidX Compose
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidx-compose-bom" }
+androidx-compose-ui = { module = "androidx.compose.ui:ui" }
+androidx-compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+
+# AndroidX Test
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-test-espresso" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-junit" }
+
+# Compose
+compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose" }
+
+# Dagger
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+dagger-lint = { module = "com.google.dagger:dagger-lint", version.ref = "dagger" }
+
+# JUnit
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+# Kotest
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+
+# Cache Fix
+cachefix-gradlePlugin = { module = "org.gradle.android.cache-fix:org.gradle.android.cache-fix.gradle.plugin", version.ref = "cachefix" }
 
 [plugins]
+
+# Jetbrains Kotlin
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# Android Gradle Plugins
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-jetbrains-kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin-ksp" }
+
+# Kotlin Symbol Processing
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+# Compose
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+
+# Cache Fix
+cachefix = { id = "org.gradle.android.cache-fix", version.ref = "cachefix" }

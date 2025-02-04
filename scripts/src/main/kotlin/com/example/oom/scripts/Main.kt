@@ -41,43 +41,7 @@ fun createModule(baseDir: File, number: Int) {
             |    id("module-setup")
             |}
             |
-            |android {
-            |    namespace = "com.example.oom.m${number}"
-            |    compileSdk = 34
-            |
-            |    defaultConfig {
-            |        minSdk = 24
-            |
-            |        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-            |        vectorDrawables {
-            |            useSupportLibrary = true
-            |        }
-            |    }
-            |    compileOptions {
-            |        sourceCompatibility = JavaVersion.VERSION_17
-            |        targetCompatibility = JavaVersion.VERSION_17
-            |    }
-            |    kotlinOptions {
-            |        jvmTarget = "17"
-            |    }
-            |    testOptions.unitTests.all { test ->
-            |        test.useJUnitPlatform()
-            |    }
-            |}
-            |
             |dependencies {
-            |    api(libs.dagger)
-            |    ksp(libs.dagger.compiler)
-            |
-            |    testImplementation(libs.junit)
-            |    testImplementation(libs.kotest.runner.junit5)
-            |    testImplementation(libs.kotest.assertions.core)
-            |    testImplementation(libs.kotest.property)
-            |
-            |    androidTestImplementation(libs.androidx.junit)
-            |    androidTestImplementation(libs.androidx.espresso.core)
-            |    androidTestImplementation(platform(libs.androidx.compose.bom))
-            |    androidTestImplementation(libs.androidx.ui.test.junit4)
             |
             ${
                 List(number / MODULES_COMPLEXITY) { i ->
